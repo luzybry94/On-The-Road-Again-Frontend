@@ -5,14 +5,14 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="nav-bar">
-        <NavLink className="nav-link" to="/">
-          Home
-        </NavLink>
         <NavLink className="nav-link" to="/trips">
-          Trips
+          My Trips
         </NavLink>
-        <NavLink className="nav-link" to="/login">
-          Login
+        <NavLink className="nav-link" to="/trips/new">
+          Plan a New Trip
+        </NavLink>
+        <NavLink className="nav-link" to="/logout">
+          Logout
         </NavLink>
       </div>
     );
