@@ -1,24 +1,27 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import { connect } from 'react-redux'
-import { getUsaStates } from '../../redux/actions/usaStatesActions'
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
-
+import { connect } from "react-redux";
+import { getUsaStates } from "../../redux/actions/usaStatesActions";
+import { createTrip } from "../../redux/actions/tripsActions";
 class TripForm extends Component {
   state = {
     name: "",
     startDate: "",
     endDate: "",
     img: "",
-    selectedStates: [],
+    stateIds: [],
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getUsaStates();
+  }
+
+  renderOptions = () => {
+    return this.props.usaStates.map((state) => ({
+      value: state.id,
+      label: state.name,
+    }));
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -28,17 +31,27 @@ class TripForm extends Component {
 
   handleStateSelection = (e) => {
     this.setState({
-      selectedStates: e,
+      stateIds: e,
     });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let selectedStates = this.state.stateIds.map((obj) => obj.value);
+    this.props.createTrip(
+      { ...this.state, stateIds: selectedStates },
+      this.props.user.id,
+      this.props.history
+    );
   };
 
   render() {
     return (
       <div className="trip-form">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <fieldset>
             <legend>New Road Trip</legend>
-            <label for="name">Trip Name</label>
+            <label htmlFor="name">Trip Name</label>
             <input
               id="name"
               type="text"
@@ -46,7 +59,7 @@ class TripForm extends Component {
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <label for="startDate">Leaving</label>
+            <label htmlFor="startDate">Leaving</label>
             <input
               id="startDate"
               type="date"
@@ -54,7 +67,7 @@ class TripForm extends Component {
               value={this.state.startDate}
               onChange={this.handleChange}
             />
-            <label for="endDate">Coming Back</label>
+            <label htmlFor="endDate">Coming Back</label>
             <input
               id="endDate"
               type="date"
@@ -62,7 +75,7 @@ class TripForm extends Component {
               value={this.state.endDate}
               onChange={this.handleChange}
             />
-            <label for="img">Image URL</label>
+            <label htmlFor="img">Image URL</label>
             <input
               id="img"
               type="text"
@@ -75,10 +88,12 @@ class TripForm extends Component {
               id="states"
               value={this.state.selectedStates}
               isMulti
-              isSearchable
-              options={options}
+              options={this.renderOptions()}
               onChange={this.handleStateSelection}
             />
+            <br></br>
+            <br></br>
+            <input type="submit" value="Lets Go!" />
           </fieldset>
         </form>
       </div>
@@ -86,4 +101,11 @@ class TripForm extends Component {
   }
 }
 
-export default connect(mapStateToProps, { getUsaStates }(TripForm);
+const mapStateToProps = (state) => {
+  return {
+    usaStates: state.usaStates,
+    user: state.currentUser,
+  };
+};
+
+export default connect(mapStateToProps, { getUsaStates, createTrip })(TripForm);
