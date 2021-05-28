@@ -1,28 +1,24 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getTrips } from "../../redux/actions/tripsActions";
 import Trip from "./Trip";
+import { Redirect } from "react-router-dom";
 
 class TripList extends Component {
-  componentDidMount() {
-    this.props.getTrips();
-  }
-
   render() {
+    console.log(this.props);
     return (
       <div className="trip-container">
-        {this.props.trips.map((trip) => (
-          <Trip trip={trip} id={trip.id} />
-        ))}
+        {this.props.user.id ? (
+          this.props.trips.length > 0 ? (
+            this.props.trips.map((trip) => <Trip key={trip.id} trip={trip} />)
+          ) : (
+            <h3>Loading...</h3>
+          )
+        ) : (
+          <Redirect to="/" />
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    trips: state.trips,
-  };
-};
-
-export default connect(mapStateToProps, { getTrips })(TripList);
+export default TripList;
