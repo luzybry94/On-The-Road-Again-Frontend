@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Login from "./Login";
+import Signup from "./Signup";
 
 const Home = () => {
   return (
     <div className="homepage">
       <h1>Welcome to On The Road Again!</h1>
-      <Link to="/login">Login</Link>
+      <Login />
+      <span>OR</span>
+      {/* <Signup /> */}
     </div>
   );
 };
