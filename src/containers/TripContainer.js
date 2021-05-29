@@ -1,25 +1,25 @@
 import React, { Component } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import TripForm from "../components/Trip/TripForm";
 import TripList from "../components/Trip/TripList";
-import Home from "../components/Home";
 import { connect } from "react-redux";
+import { getTrips } from "../redux/actions/tripsActions";
 
 class TripContainer extends Component {
+  componentDidMount() {
+    this.props.getTrips(this.props.user.id);
+  }
+
   render() {
     return (
       <div className="trip-container">
-        {this.props.user.id ? (
-          <>
-            <Route path="/trips/new" component={TripForm} />
-            <Route
-              path="/trips"
-              render={() => <TripList trips={this.props.trips} />}
-            />
-          </>
-        ) : (
-          <Redirect to="/home" />
-        )}
+        <Switch>
+          <Route path="/trips/new" component={TripForm} />
+          <Route
+            path="/trips"
+            render={() => <TripList trips={this.props.trips} />}
+          />
+        </Switch>
       </div>
     );
   }
@@ -28,8 +28,8 @@ class TripContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     trips: state.trips,
-    user: state.currentUser,
+    user: state.auth.currentUser,
   };
 };
 
-export default connect(mapStateToProps)(TripContainer);
+export default connect(mapStateToProps, { getTrips })(TripContainer);
