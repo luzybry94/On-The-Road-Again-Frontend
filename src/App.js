@@ -4,6 +4,8 @@ import NavBar from "./components/NavBar";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import TripContainer from "./containers/TripContainer";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import { connect } from "react-redux";
 import { autoLogin } from "./redux/actions/authActions";
 
@@ -30,7 +32,17 @@ class App extends React.Component {
       <div className="App">
         <NavBar />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={() => {
+              if (this.props.loggedIn) {
+                return <TripContainer />;
+              } else {
+                return <Home />;
+              }
+            }}
+          />
           <Route
             path="/trips"
             render={(props) => {
@@ -41,6 +53,8 @@ class App extends React.Component {
               }
             }}
           />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
         </Switch>
       </div>
     );
