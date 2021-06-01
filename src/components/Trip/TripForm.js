@@ -40,7 +40,6 @@ class TripForm extends Component {
     let selectedStates = this.state.stateIds.map((obj) => obj.value);
     this.props.createTrip(
       { ...this.state, stateIds: selectedStates },
-      this.props.user.id,
       this.props.history
     );
   };
@@ -104,7 +103,6 @@ class TripForm extends Component {
 const mapStateToProps = (state) => {
   return {
     usaStates: state.usaStates,
-    user: state.currentUser,
   };
 };
 
