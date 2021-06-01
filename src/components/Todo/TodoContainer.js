@@ -2,11 +2,11 @@ import React from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 
-const TodoContainer = ({ todos }) => {
+const TodoContainer = ({ todos, tripId }) => {
   return (
     <div>
       <TodoList todos={todos} />
-      <TodoForm />
+      <TodoForm tripId={tripId} />
     </div>
   );
 };
