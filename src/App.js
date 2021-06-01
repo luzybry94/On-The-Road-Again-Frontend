@@ -3,7 +3,7 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
-import TripContainer from "./containers/TripContainer";
+import TripContainer from "./components/Trip/TripContainer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { connect } from "react-redux";
