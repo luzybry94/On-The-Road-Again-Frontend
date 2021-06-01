@@ -1,6 +1,6 @@
-export const getTrips = (userId) => {
+export const getTrips = () => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/users/${userId}/trips`, {
+    fetch("http://localhost:3000/api/v1/trips", {
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
       },
@@ -10,9 +10,9 @@ export const getTrips = (userId) => {
   };
 };
 
-export const createTrip = (newTripData, userId, history) => {
+export const createTrip = (newTripData, history) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/users/${userId}/trips`, {
+    fetch("http://localhost:3000/api/v1/trips", {
       method: "POST",
       headers: {
         Accepts: "application/json",
@@ -24,6 +24,7 @@ export const createTrip = (newTripData, userId, history) => {
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "ADD_TRIP", payload: data });
+        console.log(data);
         history.push("/trips");
       });
   };
