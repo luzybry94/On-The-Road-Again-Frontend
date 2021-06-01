@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import { FaTrash } from "react-icons/fa";
 import { connect } from "react-redux";
-import { updateTodo } from "../../redux/actions/todosActions";
+import { updateTodo, deleteTodo } from "../../redux/actions/todosActions";
+import { trips } from "../../redux/reducers/tripsReducer";
 import "./style.css";
 
 class Todo extends Component {
+  handleClick = (e) => {
+    const { deleteTodo, id, tripId } = this.props;
+    e.stopPropagation();
+    deleteTodo(id, tripId);
+  };
+
   render() {
     const { content, completed, updateTodo, id, tripId } = this.props;
     return (
@@ -14,7 +21,7 @@ class Todo extends Component {
           onClick={() => updateTodo({ completed: !completed }, id, tripId)}
         >
           {content}
-          <span className="close">
+          <span onClick={this.handleClick} className="close">
             <FaTrash />
           </span>
         </li>
@@ -23,4 +30,4 @@ class Todo extends Component {
   }
 }
 
-export default connect(null, { updateTodo })(Todo);
+export default connect(null, { updateTodo, deleteTodo })(Todo);
