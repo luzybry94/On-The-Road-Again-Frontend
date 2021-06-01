@@ -29,7 +29,7 @@ class Trip extends Component {
         {this.state.showTodos ? (
           <>
             <button onClick={this.handleClick}>Close</button>
-            <TodoContainer todos={todos} closeTodos={this.handleClick} />
+            <TodoContainer tripId={id} todos={todos} closeTodos={this.handleClick} />
           </>
         ) : (
           <button onClick={this.handleClick}>ToDos</button>
