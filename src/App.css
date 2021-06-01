@@ -1,4 +1,5 @@
-.trip-form {
+.trip-form,
+.attraction-form {
   max-width: 500px;
   padding: 10px 20px;
   background: #f4f7f8;
@@ -7,20 +8,25 @@
   background: #f4f7f8;
   border-radius: 8px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  width: 350px;
 }
-.trip-form fieldset {
+.trip-form fieldset,
+.attraction-form fieldset {
   border: none;
 }
-.trip-form legend {
+.trip-form legend,
+.attraction-form legend {
   font-size: 1.4em;
   margin-bottom: 10px;
 }
-.trip-form label {
+.trip-form label,
+.attraction-form label {
   display: block;
   margin-bottom: 8px;
 }
 
-.trip-form input {
+.trip-form input,
+.attraction-form input {
   font-family: Georgia, "Times New Roman", Times, serif;
   background: rgba(255, 255, 255, 0.1);
   border: none;
@@ -40,7 +46,8 @@
   margin-bottom: 30px;
 }
 
-.trip-form input:focus {
+.trip-form input:focus,
+.attraction-form input:focus {
   background: #d2d9dd;
 }
 /* .trip-form select {
@@ -48,7 +55,8 @@
   height: 35px;
 } */
 
-.trip-form input[type="submit"] {
+.trip-form input[type="submit"],
+.attraction-form input[type="submit"] {
   position: relative;
   display: block;
   padding: 19px 39px 18px 39px;
@@ -63,21 +71,25 @@
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
 }
-.trip-form input[type="submit"]:hover {
+.trip-form input[type="submit"]:hover,
+.attraction-form input[type="submit"]:hover {
   background: #109177;
 }
 
-.trip-container {
+.trip-container,
+.attraction-container {
   display: flex;
   justify-content: space-evenly;
   flex-flow: row wrap;
 }
 
-.trip-card img {
+.trip-card img,
+.attraction-card img {
   width: 500px;
 }
 
-.trip-card {
+.trip-card,
+.attraction-card {
   padding: 20px;
 }
 
