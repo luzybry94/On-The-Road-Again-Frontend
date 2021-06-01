@@ -23,6 +23,7 @@ class Login extends Component {
   render() {
     return (
       <div>
+        <button onClick={() => this.props.history.push("/")}>Back</button>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
