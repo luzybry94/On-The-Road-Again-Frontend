@@ -4,12 +4,14 @@ import { trips } from "./reducers/tripsReducer";
 import { usaStates } from "./reducers/usaStatesReducer";
 import { auth } from "./reducers/authReducer";
 import { attractions } from "./reducers/attractionsReducer";
+import { tripFormData } from "./reducers/tripFormDataReducer";
 
 const rootReducer = combineReducers({
   trips,
   usaStates,
   auth,
   attractions,
+  tripFormData,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
