@@ -85,7 +85,7 @@ class TripForm extends Component {
             <label htmlFor="states">States</label>
             <Select
               id="states"
-              value={this.state.selectedStates}
+              value={this.state.stateIds}
               isMulti
               options={this.renderOptions()}
               onChange={this.handleStateSelection}
