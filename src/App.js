@@ -27,7 +27,8 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.loading) return <h1>Loading...</h1>;
+    if (this.state.loading)
+      return <h1 style={{ textAlign: "center" }}>Loading...</h1>;
     return (
       <div className="App">
         <NavBar />
