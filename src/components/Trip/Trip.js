@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux'
 import TodoContainer from "../Todo/TodoContainer";
+import Moment from "react-moment";
+import {deleteTrip} from '../../redux/actions/tripsActions'
 
 class Trip extends Component {
   state = {
@@ -14,7 +17,7 @@ class Trip extends Component {
   };
 
   render() {
-    const { name, dateStart, dateEnd, img, states, id, todos } = this.props;
+    const { name, startDate, endDate, img, states, id, todos } = this.props;
     return (
       <div className="trip-card">
         <img style={{ display: "block" }} src={img} alt="trip-image" />
@@ -24,12 +27,25 @@ class Trip extends Component {
         </span>
         <h4>States: {states.map((state) => `${state.name} `)}</h4>
         <h6>
-          {dateStart} - {dateEnd}
+          {<Moment date={startDate} format="LL" />} -
+          {<Moment date={endDate} format="LL" />}
         </h6>
+        <button onClick={() => this.props.deleteTrip(id)} style={{ float: "right" }}>Delete</button>
+        <Link
+          to={`/trips/${id}/edit`}
+          style={{ float: "right", marginRight: "10px" }}
+        >
+          Edit
+        </Link>
+
         {this.state.showTodos ? (
           <>
             <button onClick={this.handleClick}>Close</button>
-            <TodoContainer tripId={id} todos={todos} closeTodos={this.handleClick} />
+            <TodoContainer
+              tripId={id}
+              todos={todos}
+              closeTodos={this.handleClick}
+            />
           </>
         ) : (
           <button onClick={this.handleClick}>ToDos</button>
@@ -39,4 +55,4 @@ class Trip extends Component {
   }
 }
 
-export default Trip;
+export default connect(null, {deleteTrip})(Trip);
