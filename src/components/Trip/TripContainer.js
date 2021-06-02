@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import TripForm from "./TripForm";
 import TripList from "./TripList";
 import TripShow from "./TripShow";
+import TripEditForm from "./TripEditForm";
 import { connect } from "react-redux";
 import { getTrips } from "../../redux/actions/tripsActions";
 
@@ -15,7 +16,14 @@ class TripContainer extends Component {
     return (
       <div className="trip-container">
         <Switch>
-          <Route path="/trips/new" component={TripForm} />
+          <Route exact path="/trips/new" component={TripForm} />
+          <Route
+            path="/trips/:id/edit"
+            render={({ match }) => {
+              let id = parseInt(match.params.id);
+              return <TripEditForm editMode tripId={id} />;
+            }}
+          />
           <Route
             path="/trips/:id"
             render={({ match }) => {
@@ -40,6 +48,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, { getTrips })(TripContainer)
-);
+export default connect(mapStateToProps, { getTrips })(TripContainer);
