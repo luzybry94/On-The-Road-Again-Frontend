@@ -4,6 +4,10 @@ export const trips = (state = [], action) => {
       return action.payload;
     case "ADD_TRIP":
       return [...state, action.payload];
+    case "UPDATE_TRIP":
+      return state.map((trip) =>
+        trip.id === action.payload.id ? action.payload : trip
+      );
     case "ADD_TODO":
       return state.map((trip) =>
         trip.id === action.payload.id ? action.payload : trip
