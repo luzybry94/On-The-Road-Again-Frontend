@@ -1,58 +1,74 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {connect} from 'react-redux'
 import TodoContainer from "../Todo/TodoContainer";
+import TripEditForm from "./TripEditForm";
 import Moment from "react-moment";
-import {deleteTrip} from '../../redux/actions/tripsActions'
 
 class Trip extends Component {
   state = {
     showTodos: false,
+    editMode: false,
   };
 
-  handleClick = () => {
+  toggleTodos = (e) => {
+    e.preventDefault();
     this.setState({
       showTodos: !this.state.showTodos,
     });
   };
 
+  toggleEditMode = (e) => {
+    this.setState({
+      editMode: !this.state.editMode,
+    });
+  };
+
   render() {
+    if (this.state.editMode)
+      return (
+        <TripEditForm trip={this.props} toggleEditMode={this.toggleEditMode} />
+      );
     const { name, startDate, endDate, img, states, id, todos } = this.props;
     return (
       <div className="trip-card">
-        <img style={{ display: "block" }} src={img} alt="trip-image" />
-        <h3 style={{ display: "inline" }}>{name} </h3>
-        <span>
+        <img
+          style={{ display: "block", marginBottom: "25px" }}
+          src={img}
+          alt="trip"
+        />
+        <h3 style={{ display: "inline" }}>{name}</h3>
+        <span style={{ marginLeft: "10px" }}>
           <Link to={`/trips/${id}`}>&#40;See Attractions&#41;</Link>
         </span>
-        <h4>States: {states.map((state) => `${state.name} `)}</h4>
-        <h6>
+        <button onClick={this.toggleEditMode} style={{ float: "right" }}>
+          Edit Trip
+        </button>
+        <p>
           {<Moment date={startDate} format="LL" />} -
           {<Moment date={endDate} format="LL" />}
-        </h6>
-        <button onClick={() => this.props.deleteTrip(id)} style={{ float: "right" }}>Delete</button>
-        <Link
-          to={`/trips/${id}/edit`}
-          style={{ float: "right", marginRight: "10px" }}
-        >
-          Edit
-        </Link>
+        </p>
+
+        <p>
+          {states.map((state) => (
+            <li key={state.id}>{state.name}</li>
+          ))}
+        </p>
 
         {this.state.showTodos ? (
           <>
-            <button onClick={this.handleClick}>Close</button>
-            <TodoContainer
-              tripId={id}
-              todos={todos}
-              closeTodos={this.handleClick}
-            />
+            <button type="button" onClick={this.toggleTodos}>
+              Close
+            </button>
+            <TodoContainer tripId={id} todos={todos} />
           </>
         ) : (
-          <button onClick={this.handleClick}>ToDos</button>
+          <button type="button" onClick={this.toggleTodos}>
+            ToDos
+          </button>
         )}
       </div>
     );
   }
 }
 
-export default connect(null, {deleteTrip})(Trip);
+export default Trip;
