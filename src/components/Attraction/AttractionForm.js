@@ -20,19 +20,18 @@ class AttractionForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createAttraction(
-      {
-        ...this.state,
-      },
-      this.props.tripId
+      this.state,
+      this.props.tripId,
+      this.props.toggleShowAttrForm
     );
   };
 
   render() {
     return (
       <div className="attraction-form">
+        <button onClick={this.props.toggleShowAttrForm}>Close</button>
         <form onSubmit={this.handleSubmit}>
           <fieldset>
-            <button onClick={this.props.clickHandler}>Close</button>
             <label htmlFor="name">Attraction Name</label>
             <input
               id="name"
