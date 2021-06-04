@@ -6,7 +6,7 @@ export const getTrips = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "SET_TRIPS", payload: data }));
+      .then((trips) => dispatch({ type: "SET_TRIPS", payload: trips }));
   };
 };
 
@@ -22,14 +22,14 @@ export const createTrip = (newTripData, history) => {
       body: JSON.stringify(newTripData),
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "ADD_TRIP", payload: data });
+      .then((trip) => {
+        dispatch({ type: "ADD_TRIP", payload: trip });
         history.push("/trips");
       });
   };
 };
 
-export const updateTrip = (updatedTripData, tripId, history) => {
+export const updateTrip = (updatedTripData, tripId, callback) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
       method: "PATCH",
@@ -43,22 +43,7 @@ export const updateTrip = (updatedTripData, tripId, history) => {
       .then((res) => res.json())
       .then((trip) => {
         dispatch({ type: "UPDATE_TRIP", payload: trip });
-        history.push("/trips");
-      });
-  };
-};
-
-export const getTripData = (tripId, callback) => {
-  return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((trip) => {
-        dispatch({ type: "SET_TRIP_DATA", payload: trip });
-        callback(trip);
+        callback();
       });
   };
 };
@@ -66,11 +51,15 @@ export const getTripData = (tripId, callback) => {
 export const deleteTrip = (tripId) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
+      method: "DELETE",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`,
       },
     })
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "SET_TRIPS", payload: data }));
+      .then((id) => {
+        dispatch({ type: "DELETE_TRIP", payload: id });
+      });
   };
 };
