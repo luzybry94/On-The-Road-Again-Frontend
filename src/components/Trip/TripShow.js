@@ -5,13 +5,8 @@ import {
   unsetAttractions,
 } from "../../redux/actions/attractionsActions";
 import AttractionList from "../Attraction/AttractionList";
-import AttractionForm from "../Attraction/AttractionForm";
 
 class TripShow extends Component {
-  state = {
-    showAttractionForm: false,
-  };
-
   componentDidMount() {
     this.props.getAttractions(this.props.tripId);
   }
@@ -20,29 +15,14 @@ class TripShow extends Component {
     this.props.unsetAttractions();
   }
 
-  handleClick = () => {
-    this.setState({
-      showAttractionForm: !this.state.showAttractionForm,
-    });
-  };
-
   render() {
+    const { attractions, tripId } = this.props;
     return (
       <div>
-        {this.props.trip ? (
-          <>
-            <AttractionList attractions={this.props.attractions} />
-            {this.state.showAttractionForm ? (
-              <AttractionForm
-                clickHandler={this.handleClick}
-                tripId={this.props.tripId}
-              />
-            ) : (
-              <button onClick={this.handleClick}>Add Attraction</button>
-            )}
-          </>
+        {attractions.length > 0 ? (
+          <AttractionList attractions={attractions} tripId={tripId} />
         ) : (
-          <h1>Loading...</h1>
+          <h1 style={{ textAlign: "center" }}>Loading...</h1>
         )}
       </div>
     );
