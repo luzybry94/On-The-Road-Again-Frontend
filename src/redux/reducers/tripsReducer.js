@@ -8,6 +8,8 @@ export const trips = (state = [], action) => {
       return state.map((trip) =>
         trip.id === action.payload.id ? action.payload : trip
       );
+    case "DELETE_TRIP":
+      return state.filter((trip) => trip.id !== action.payload);
     case "ADD_TODO":
       return state.map((trip) =>
         trip.id === action.payload.id ? action.payload : trip
