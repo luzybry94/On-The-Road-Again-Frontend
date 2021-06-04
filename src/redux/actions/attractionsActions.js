@@ -6,8 +6,8 @@ export const getAttractions = (tripId) => {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "SET_ATTRACTIONS", payload: data });
+      .then((attractions) => {
+        dispatch({ type: "SET_ATTRACTIONS", payload: attractions });
       });
   };
 };
@@ -18,7 +18,7 @@ export const unsetAttractions = () => {
   };
 };
 
-export const createAttraction = (newAttractionData, tripId) => {
+export const createAttraction = (newAttractionData, tripId, callback) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/trips/${tripId}/attractions`, {
       method: "POST",
@@ -30,9 +30,52 @@ export const createAttraction = (newAttractionData, tripId) => {
       body: JSON.stringify(newAttractionData),
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "ADD_TRIP", payload: data });
-        window.location.reload();
+      .then((attraction) => {
+        dispatch({ type: "ADD_ATTRACTION", payload: attraction });
+        callback();
+      });
+  };
+};
+
+export const updateAttraction = (
+  updatedAttractionData,
+  attractionId,
+  tripId,
+  callback
+) => {
+  return (dispatch) => {
+    fetch(
+      `http://localhost:3000/api/v1/trips/${tripId}/attractions/${attractionId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Accepts: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+        body: JSON.stringify(updatedAttractionData),
+      }
+    )
+      .then((res) => res.json())
+      .then((attraction) => {
+        dispatch({ type: "UPDATE_ATTRACTION", payload: attraction });
+        callback();
+      });
+  };
+};
+
+export const deleteAttraction = (id, tripId) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/trips/${tripId}/attractions/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((id) => {
+        dispatch({ type: "DELETE_ATTRACTION", payload: id });
       });
   };
 };
