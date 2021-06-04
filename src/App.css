@@ -1,23 +1,17 @@
 .trip-form,
 .attraction-form {
-  max-width: 500px;
-  padding: 10px 20px;
-  background: #f4f7f8;
-  margin: 10px auto;
+  width: 425px;
   padding: 20px;
   background: #f4f7f8;
-  border-radius: 8px;
+  margin: 15px;
+  background: #f4f7f8;
+  border-radius: 10px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  width: 350px;
 }
+
 .trip-form fieldset,
 .attraction-form fieldset {
   border: none;
-}
-.trip-form legend,
-.attraction-form legend {
-  font-size: 1.4em;
-  margin-bottom: 10px;
 }
 .trip-form label,
 .attraction-form label {
@@ -26,7 +20,8 @@
 }
 
 .trip-form input,
-.attraction-form input {
+.attraction-form input,
+.attraction-form select {
   font-family: Georgia, "Times New Roman", Times, serif;
   background: rgba(255, 255, 255, 0.1);
   border: none;
@@ -43,7 +38,7 @@
   color: #2a363f;
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
 }
 
 .trip-form input:focus,
@@ -79,18 +74,47 @@
 .trip-container,
 .attraction-container {
   display: flex;
-  justify-content: space-evenly;
   flex-flow: row wrap;
 }
 
 .trip-card img,
-.attraction-card img {
+.trip-edit-card img {
   width: 500px;
 }
 
+.attraction-card img,
+.attraction-edit-card img {
+  width: 375px;
+  border-radius: 20%;
+}
+
 .trip-card,
-.attraction-card {
+.trip-edit-card {
   padding: 20px;
+}
+
+.attraction-card,
+.add-attraction-card {
+  background-color: cadetblue;
+  padding: 20px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 10%;
+  color: rgb(240, 230, 230);
+  width: 425px;
+}
+
+.add-attraction-card {
+  outline: none;
+  font-size: 50px;
+}
+
+.attraction-edit-card {
+  background-color: cadetblue;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10%;
+  color: rgb(80, 73, 73);
 }
 
 .nav-link {
@@ -104,4 +128,23 @@
 
 .nav-bar {
   padding: 20px;
+}
+
+.delete-btn {
+  position: relative;
+  display: block;
+  padding: 5px 10px 5px 10px;
+  color: #fff;
+  margin: 0 auto;
+  background: #db1919;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid #16a085;
+  margin-bottom: 10px;
+}
+
+.delete-btn:hover {
+  background: #a32312;
 }
