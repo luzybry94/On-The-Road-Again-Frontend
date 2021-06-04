@@ -49,7 +49,6 @@ class TripForm extends Component {
       <div className="trip-form">
         <form onSubmit={this.handleSubmit}>
           <fieldset>
-            <legend>New Road Trip</legend>
             <label htmlFor="name">Trip Name</label>
             <input
               id="name"
