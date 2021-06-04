@@ -3,7 +3,7 @@ import Trip from "./Trip";
 
 const TripList = ({ trips }) => {
   return (
-    <div>
+    <div className="trip-container">
       {trips.length === 0 ? (
         <h1>Loading...</h1>
       ) : (
