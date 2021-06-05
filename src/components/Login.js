@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { login } from "../redux/actions/authActions";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -22,11 +22,16 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.history.push("/")}>Back</button>
+      <div className="homepage">
+        <img
+          className="header-logo"
+          src="https://res.cloudinary.com/dlhbuxc82/image/upload/v1622787954/On_The_Road_Again_3_lyji1j.png"
+          alt="logo"
+        />
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
+            required
             placeholder="Username"
             name="username"
             value={this.state.username}
@@ -35,6 +40,7 @@ class Login extends Component {
           <br></br>
           <input
             type="password"
+            required
             placeholder="Password"
             name="password"
             value={this.state.password}
@@ -42,6 +48,12 @@ class Login extends Component {
           />
           <br></br>
           <input type="submit" value="Login" />
+          <div className="footer">
+            Need an account?{" "}
+            <Link style={{ color: "blue" }} to="/signup">
+              Signup Here
+            </Link>
+          </div>
         </form>
       </div>
     );
