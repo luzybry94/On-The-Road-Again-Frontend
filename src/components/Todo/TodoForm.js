@@ -29,11 +29,12 @@ class TodoForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
+            required
             placeholder="ex) remember to bring Kevin"
             value={this.state.content}
             onChange={this.handleChange}
           />
-          <input type="submit" className="addBtn" value="Add" />
+          <input type="submit" id="addBtn" value="Add" />
         </form>
       </div>
     );
