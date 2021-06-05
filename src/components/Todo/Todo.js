@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { FaTrash } from "react-icons/fa";
 import { connect } from "react-redux";
 import { updateTodo, deleteTodo } from "../../redux/actions/todosActions";
-import "./style.css";
+import "./todo.css";
 
 class Todo extends Component {
   handleClick = (e) => {
