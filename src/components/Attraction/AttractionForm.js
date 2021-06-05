@@ -35,6 +35,7 @@ class AttractionForm extends Component {
             <label htmlFor="name">Attraction Name</label>
             <input
               id="name"
+              required
               type="text"
               name="name"
               value={this.state.name}
@@ -43,6 +44,7 @@ class AttractionForm extends Component {
             <label htmlFor="date">When</label>
             <input
               id="date"
+              required
               type="date"
               name="date"
               value={this.state.date}
@@ -51,6 +53,7 @@ class AttractionForm extends Component {
             <label htmlFor="pricing">Pricing</label>
             <select
               name="pricing"
+              required
               id="pricing"
               value={this.state.pricing}
               onChange={this.handleChange}
@@ -66,6 +69,7 @@ class AttractionForm extends Component {
             <label htmlFor="img">Image URL</label>
             <input
               id="img"
+              required
               type="text"
               name="img"
               value={this.state.img}
@@ -74,6 +78,7 @@ class AttractionForm extends Component {
             <label htmlFor="location">Where</label>
             <input
               id="location"
+              required
               name="location"
               type="text"
               value={this.state.location}
