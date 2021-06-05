@@ -28,6 +28,10 @@ class TripContainer extends Component {
             path="/trips"
             render={() => <TripList trips={this.props.trips} />}
           />
+          <Route
+            path="/"
+            render={() => <TripList trips={this.props.trips} />}
+          />
         </Switch>
       </div>
     );
