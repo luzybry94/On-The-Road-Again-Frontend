@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { signup } from "../redux/actions/authActions";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Signup extends Component {
   state = {
     name: "",
-    email: "",
     username: "",
     password: "",
   };
@@ -24,11 +23,16 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.history.push("/")}>Back</button>
+      <div className="homepage">
+        <img
+          className="header-logo"
+          src="https://res.cloudinary.com/dlhbuxc82/image/upload/v1622787954/On_The_Road_Again_3_lyji1j.png"
+          alt="logo"
+        />
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
+            required
             placeholder="Name"
             name="name"
             value={this.state.name}
@@ -36,15 +40,8 @@ class Signup extends Component {
           />
           <br></br>
           <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-          <br></br>
-          <input
             type="text"
+            required
             placeholder="Username"
             name="username"
             value={this.state.username}
@@ -53,6 +50,7 @@ class Signup extends Component {
           <br></br>
           <input
             type="password"
+            required
             placeholder="Password"
             name="password"
             value={this.state.password}
@@ -60,6 +58,12 @@ class Signup extends Component {
           />
           <br></br>
           <input type="submit" value="Signup" />
+          <div className="footer">
+            Already a member?{" "}
+            <Link style={{ color: "blue" }} to="/">
+              Login
+            </Link>
+          </div>
         </form>
       </div>
     );
