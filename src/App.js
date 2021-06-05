@@ -2,7 +2,6 @@ import "./App.css";
 import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Home from "./components/Home";
 import TripContainer from "./components/Trip/TripContainer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -40,7 +39,7 @@ class App extends React.Component {
               if (this.props.loggedIn) {
                 return <TripContainer />;
               } else {
-                return <Home />;
+                return <Login />;
               }
             }}
           />
@@ -54,8 +53,16 @@ class App extends React.Component {
               }
             }}
           />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
+          <Route
+            path="/signup"
+            render={() => {
+              if (this.props.loggedIn) {
+                return <Redirect to="/trips" />;
+              } else {
+                return <Signup />;
+              }
+            }}
+          />
         </Switch>
       </div>
     );
