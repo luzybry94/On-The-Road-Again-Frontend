@@ -67,6 +67,7 @@ class TripEditForm extends Component {
           <label htmlFor="name">Trip Name</label>
           <input
             id="name"
+            required
             type="text"
             name="name"
             value={name}
@@ -75,6 +76,7 @@ class TripEditForm extends Component {
           <label htmlFor="startDate">Leaving</label>
           <input
             id="startDate"
+            required
             type="date"
             name="startDate"
             value={startDate}
@@ -83,6 +85,7 @@ class TripEditForm extends Component {
           <label htmlFor="endDate">Coming Back</label>
           <input
             id="endDate"
+            required
             type="date"
             name="endDate"
             value={endDate}
@@ -91,6 +94,7 @@ class TripEditForm extends Component {
           <label htmlFor="img">Image URL</label>
           <input
             id="img"
+            required
             type="text"
             name="img"
             value={img}
