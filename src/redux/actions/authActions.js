@@ -10,12 +10,16 @@ export const login = (loginInfo, history) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        localStorage.token = data.jwt;
-        dispatch({
-          type: "SET_USER",
-          payload: { loggedIn: data.logged_in, currentUser: data.user },
-        });
-        history.push("/trips");
+        if (data.error) {
+          alert(data.error);
+        } else {
+          localStorage.token = data.jwt;
+          dispatch({
+            type: "SET_USER",
+            payload: { loggedIn: data.logged_in, currentUser: data.user },
+          });
+          history.push("/trips");
+        }
       });
   };
 };
@@ -32,12 +36,16 @@ export const signup = (userInfo, history) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        localStorage.token = data.jwt;
-        dispatch({
-          type: "SET_USER",
-          payload: { loggedIn: data.logged_in, currentUser: data.user },
-        });
-        history.push("/trips/new");
+        if (data.error) {
+          alert(data.error);
+        } else {
+          localStorage.token = data.jwt;
+          dispatch({
+            type: "SET_USER",
+            payload: { loggedIn: data.logged_in, currentUser: data.user },
+          });
+          history.push("/trips/new");
+        }
       });
   };
 };
@@ -63,7 +71,7 @@ export const autoLogin = (callback) => {
 
 export const logout = () => {
   return (dispatch) => {
-    localStorage.clear("token");
+    localStorage.clear();
     dispatch({ type: "LOGOUT" });
   };
 };
