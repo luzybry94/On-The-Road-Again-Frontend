@@ -39,7 +39,7 @@ class AttractionEditForm extends Component {
       <div className="attraction-edit-card">
         <img src={img} alt="attraction" />
 
-        <form className="attraction-form" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <button
             type="button"
             style={{ float: "right" }}
@@ -51,6 +51,7 @@ class AttractionEditForm extends Component {
           <label htmlFor="name">Name</label>
           <input
             id="name"
+            required
             type="text"
             name="name"
             value={name}
@@ -59,6 +60,7 @@ class AttractionEditForm extends Component {
           <label htmlFor="location">Where</label>
           <input
             id="location"
+            required
             name="location"
             type="text"
             value={location}
@@ -67,6 +69,7 @@ class AttractionEditForm extends Component {
           <label htmlFor="pricing">Pricing</label>
           <select
             id="pricing"
+            required
             name="pricing"
             value={pricing}
             onChange={this.handleChange}
@@ -82,6 +85,7 @@ class AttractionEditForm extends Component {
           <label htmlFor="date">When</label>
           <input
             id="date"
+            required
             type="date"
             name="date"
             value={date}
@@ -90,6 +94,7 @@ class AttractionEditForm extends Component {
           <label htmlFor="image">Image URL</label>
           <input
             id="image"
+            required
             type="text"
             name="img"
             value={img}
