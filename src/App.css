@@ -2,9 +2,22 @@
   box-sizing: border-box;
 }
 
-.trip-form,
+.trip-form {
+  width: 500px;
+  padding: 20px;
+  background: #f4f7f8;
+  margin: 15px;
+  background: #f4f7f8;
+  border-radius: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: block;
+  margin: auto;
+}
+
 .attraction-form {
-  width: 425px;
+  border-radius: 10%;
+  width: 375px;
+  height: 487px;
   padding: 20px;
   background: #f4f7f8;
   margin: 15px;
@@ -91,6 +104,7 @@
 .trip-card img,
 .trip-edit-card img {
   width: 500px;
+  height: 333px;
 }
 
 .attraction-card img,
