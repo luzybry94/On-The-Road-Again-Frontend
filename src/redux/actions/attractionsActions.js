@@ -1,4 +1,4 @@
-export const getAttractions = (tripId) => {
+export const getAttractions = (tripId, callback) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/trips/${tripId}/attractions`, {
       headers: {
@@ -8,6 +8,7 @@ export const getAttractions = (tripId) => {
       .then((res) => res.json())
       .then((attractions) => {
         dispatch({ type: "SET_ATTRACTIONS", payload: attractions });
+        callback();
       });
   };
 };
