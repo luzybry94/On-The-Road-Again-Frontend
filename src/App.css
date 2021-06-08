@@ -99,6 +99,7 @@
 .attraction-container {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 .trip-card img,
@@ -150,13 +151,15 @@
   width: 100px;
   padding: 12px;
   margin: 0 6px 6px;
-  background: rgb(26, 186, 207);
+  background: rgb(41, 103, 173);
   text-decoration: none;
   color: white;
+  border-radius: 10%;
 }
 
 .nav-bar {
   padding: 20px;
+  margin-left: 113px;
 }
 
 .delete-btn {
