@@ -1,6 +1,6 @@
 export const getAttractions = (tripId, callback) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}/attractions`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}/attractions`, {
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
       },
@@ -21,7 +21,7 @@ export const unsetAttractions = () => {
 
 export const createAttraction = (newAttractionData, tripId, callback) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}/attractions`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}/attractions`, {
       method: "POST",
       headers: {
         Accepts: "application/json",
@@ -46,7 +46,7 @@ export const updateAttraction = (
 ) => {
   return (dispatch) => {
     fetch(
-      `http://localhost:3000/api/v1/trips/${tripId}/attractions/${attractionId}`,
+      `http://localhost:3001/api/v1/trips/${tripId}/attractions/${attractionId}`,
       {
         method: "PATCH",
         headers: {
@@ -67,7 +67,7 @@ export const updateAttraction = (
 
 export const deleteAttraction = (id, tripId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}/attractions/${id}`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}/attractions/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -1,6 +1,6 @@
 export const getTrips = () => {
   return (dispatch) => {
-    fetch("http://localhost:3000/api/v1/trips", {
+    fetch("http://localhost:3001/api/v1/trips", {
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
       },
@@ -12,7 +12,7 @@ export const getTrips = () => {
 
 export const createTrip = (newTripData, history) => {
   return (dispatch) => {
-    fetch("http://localhost:3000/api/v1/trips", {
+    fetch("http://localhost:3001/api/v1/trips", {
       method: "POST",
       headers: {
         Accepts: "application/json",
@@ -31,7 +31,7 @@ export const createTrip = (newTripData, history) => {
 
 export const updateTrip = (updatedTripData, tripId, callback) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}`, {
       method: "PATCH",
       headers: {
         Accepts: "application/json",
@@ -50,7 +50,7 @@ export const updateTrip = (updatedTripData, tripId, callback) => {
 
 export const deleteTrip = (tripId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

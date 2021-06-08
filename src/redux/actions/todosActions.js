@@ -1,6 +1,6 @@
 export const addTodo = (newTodo, tripId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}/todos`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}/todos`, {
       method: "POST",
       headers: {
         Accepts: "application/json",
@@ -18,7 +18,7 @@ export const addTodo = (newTodo, tripId) => {
 
 export const updateTodo = (update, todoId, tripId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}/todos/${todoId}`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}/todos/${todoId}`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -34,7 +34,7 @@ export const updateTodo = (update, todoId, tripId) => {
 
 export const deleteTodo = (todoId, tripId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/trips/${tripId}/todos/${todoId}`, {
+    fetch(`http://localhost:3001/api/v1/trips/${tripId}/todos/${todoId}`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",

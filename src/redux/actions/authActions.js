@@ -1,6 +1,6 @@
 export const login = (loginInfo, history) => {
   return (dispatch) => {
-    fetch("http://localhost:3000/api/v1/login", {
+    fetch("http://localhost:3001/api/v1/login", {
       method: "POST",
       headers: {
         Accepts: "application/json",
@@ -26,7 +26,7 @@ export const login = (loginInfo, history) => {
 
 export const signup = (userInfo, history) => {
   return (dispatch) => {
-    fetch("http://localhost:3000/api/v1/signup", {
+    fetch("http://localhost:3001/api/v1/signup", {
       method: "POST",
       headers: {
         Accepts: "application/json",
@@ -52,7 +52,7 @@ export const signup = (userInfo, history) => {
 
 export const autoLogin = (callback) => {
   return (dispatch) => {
-    fetch("http://localhost:3000/api/v1/autologin", {
+    fetch("http://localhost:3001/api/v1/autologin", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
