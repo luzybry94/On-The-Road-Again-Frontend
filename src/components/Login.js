@@ -47,7 +47,7 @@ class Login extends Component {
             onChange={this.handleChange}
           />
           <br></br>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" className="login-btn" />
           <div className="footer">
             Need an account?{" "}
             <Link style={{ color: "blue" }} to="/signup">
