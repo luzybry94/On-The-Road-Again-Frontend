@@ -73,7 +73,7 @@ ul li.checked::before {
 }
 /* Style the input */
 .todo-form input {
-  margin: 0;
+  margin-bottom: 15px;
   /* border: none; */
   border-radius: 0;
   width: 75%;

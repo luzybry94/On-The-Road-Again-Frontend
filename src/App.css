@@ -14,6 +14,30 @@
   margin: auto;
 }
 
+.new-trip:before {
+  background-image: url("https://res.cloudinary.com/dlhbuxc82/image/upload/v1622784413/dino-reichmuth-A5rCN8626Ck-unsplash_piqgto.jpg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+}
+
+.new-trip {
+  background-color: rgb(181 167 167 / 50%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+  margin-left: 45rem;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
 .attraction-form {
   border-radius: 10%;
   width: 375px;
@@ -88,6 +112,7 @@
   border: 1px solid #16a085;
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
+  border-radius: 0.5rem;
 }
 .trip-form input[type="submit"]:hover,
 .attraction-form input[type="submit"]:hover,
@@ -100,12 +125,47 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+  /* background-color: rgb(249 249 249); */
+  padding-bottom: 100px;
+  padding-top: 20px;
+}
+
+.attraction-container:before {
+  background-image: url("https://res.cloudinary.com/dlhbuxc82/image/upload/v1623284189/viviana-rishe-_6cuFnt_qCs-unsplash_slq3ps.jpg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+}
+
+.trip-container:before {
+  background-image: url("https://res.cloudinary.com/dlhbuxc82/image/upload/v1623277931/anthony-cantin-ig-lw0Dtz34-unsplash_pn5aw9.jpg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
 }
 
 .trip-card img,
 .trip-edit-card img {
+  object-fit: cover;
   width: 500px;
   height: 333px;
+  border-radius: inherit;
 }
 
 .attraction-card img,
@@ -117,17 +177,55 @@
 
 .trip-card,
 .trip-edit-card {
-  padding: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  margin-top: 25px;
+  background-color: white;
+  border-radius: 10px;
+  width: 500px;
+  height: fit-content;
+}
+
+button {
+  box-shadow: inset 0px 11px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 42px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-weight: bold;
+  border: none;
+  padding: 7px 14px;
+  text-decoration: none;
+  outline: none;
+}
+button:hover {
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
+}
+button:active {
+  position: relative;
+  top: 1px;
+}
+
+.trip-card button:hover {
+  background-color: rgb(199, 199, 199);
+}
+
+.trip-info {
+  padding: 10px;
+  margin-left: 7px;
 }
 
 .attraction-card,
 .add-attraction-card {
-  background-color: cadetblue;
+  background-color: #86acbb;
   padding: 20px;
   text-align: center;
   margin: 15px;
   border-radius: 10%;
-  color: rgb(240, 230, 230);
+  color: rgb(255, 255, 255);
   width: 375px;
   height: 487px;
 }
@@ -138,7 +236,7 @@
 }
 
 .attraction-edit-card {
-  background-color: cadetblue;
+  background-color: #86acbb;
   padding: 20px;
   margin: 15px;
   border-radius: 10%;
@@ -151,15 +249,15 @@
   width: 100px;
   padding: 12px;
   margin: 0 6px 6px;
-  background: rgb(41, 103, 173);
+  background: rgb(11 110 160);
   text-decoration: none;
   color: white;
   border-radius: 10%;
 }
 
 .nav-bar {
+  margin-top: 10px;
   padding: 20px;
-  margin-left: 113px;
 }
 
 .delete-btn {
@@ -175,6 +273,8 @@
   width: 100%;
   border: 1px solid #16a085;
   margin-bottom: 10px;
+  border-radius: 0.5rem;
+  font-weight: normal;
 }
 
 .delete-btn:hover {
@@ -227,15 +327,16 @@
   font-family: poppins;
 }
 
+.login-btn {
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: rgb(207, 207, 207);
+}
+
 .footer {
   color: white;
   text-align: center;
   margin: 20px;
-}
-
-.back-button {
-  display: block;
-  margin: 0px 0px;
-
-  margin-right: auto;
 }
