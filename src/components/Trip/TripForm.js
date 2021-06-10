@@ -46,7 +46,7 @@ class TripForm extends Component {
 
   render() {
     return (
-      <div className="trip-form">
+      <div className="trip-form new-trip">
         <form onSubmit={this.handleSubmit}>
           <fieldset>
             <label htmlFor="name">Trip Name</label>
